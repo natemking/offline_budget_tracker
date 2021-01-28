@@ -1,7 +1,7 @@
 # Offline Budget Tracker
 Homework # 18 PWA: Online/Offline Budget Trackers
 <!-- 
-[Workout Tracker Deploy Link](https://workout-tracker-nmk.herokuapp.com/) -->
+[Offline Budget Tracker Deploy Link](https://pwa-budget-tracker-nmk.herokuapp.com/) -->
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/natemking/offline_budget_tracker/blob/main/LICENSE)
 
