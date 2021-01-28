@@ -12,7 +12,7 @@ let db = {};
 
 //*** MongoDB Connection ***//
 //==========================//
-let dbName = 'budget';
+let dbName = 'budgetDB';
 
 (async () => {
     try {
