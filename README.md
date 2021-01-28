@@ -60,7 +60,7 @@ Licensed under the GNU GPLv3.0 License. Copyright © 2020
 
 <!-- * [What is light server](https://www.geeksforgeeks.org/how-to-install-and-use-lite-server-in-your-project/)
 
-* [Set up mongoose models like sequelize model set up](https://gist.github.com/AKIRA-MIYAKE/03b9ae80dbdf61bf28ef)
+* [Add a manifest ](https://web.dev/add-manifest/)
 
 * [Creating relationships w/ Mongoose](https://dev.to/oluseyeo/how-to-create-relationships-with-mongoose-and-node-js-11c8)  
 
