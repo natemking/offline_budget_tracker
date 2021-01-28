@@ -14,20 +14,20 @@
   <title>Budget Tracker</title>
 </head>
 <body>
-  <div class="wrapper">
-    <div class="total">
-      <div class="total">Your total is: $<span id="total">0</span></div>
-    </div>
+  <section class="wrapper">
+    <section class="total">
+      <section class="total">Your total is: $<span id="total">0</span></section>
+    </section>
 
-    <div class="form">
+    <section class="form">
       <input type="text" id="t-name" placeholder="Name of transaction" />
       <input type="number" min="0" id="t-amount" placeholder="Transaction amount" />
       <button id="add-btn"><i class="fa fa-plus buttons"></i> Add Funds</button>
       <button id="sub-btn"><i class="fa fa-minus"></i> Subtract Funds</button>
       <p class="error"></p>
-    </div>
+    </section>
 
-    <div class="transactions">
+    <section class="transactions">
       <table>
         <thead>
           <th>Transaction</th>
@@ -37,22 +37,24 @@
           
         </tbody>
       </table>
-    </div>
+    </section>
     
     <canvas id="myChart"></canvas>
-  </div>
+  </section>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="../assets/js/index.js"></script>
+  <!-- Register the service worker -->
   <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", async () => {
         try {
           const reg = await navigator.serviceWorker.register("../service-worker.js");
           console.log('ServiceWorker registration successful with scope: ', reg.scope);
-        } catch (err) { console.error('Registration failed:', err) }
+        } catch (err) { console.error('ServiceWorker registration failed:', err) }
       });
     }
   </script>
+
 </body>
 </html>
