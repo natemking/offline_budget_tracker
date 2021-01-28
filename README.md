@@ -58,7 +58,7 @@ Licensed under the GNU GPLv3.0 License. Copyright © 2020
 
 ## Credits
 
-<!-- * [Use async/await with Mongoose connection](https://gist.github.com/emilioriosvz/abdbe137737b830b21d66dc5f1236311)
+<!-- * [What is light server](https://www.geeksforgeeks.org/how-to-install-and-use-lite-server-in-your-project/)
 
 * [Set up mongoose models like sequelize model set up](https://gist.github.com/AKIRA-MIYAKE/03b9ae80dbdf61bf28ef)
 
