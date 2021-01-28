@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/natemking/offline_budget_tracker/issues"
   },
-  "homepage": "https://pwa-budget-tracker-nmk.herokuapp.com/",
+  "homepage": "https://github.com/natemking/offline_budget_tracker#readme",
   "dependencies": {
     "compression": "^1.7.4",
     "express": "^4.17.1",
