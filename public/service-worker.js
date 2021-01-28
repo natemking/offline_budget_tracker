@@ -3,6 +3,7 @@ const FILES_TO_CACHE = [
     '/views/index.html',
     '/assets/css/styles.css',
     '/assets/js/index.js',
+    '/assets/js/indexedDB.js',
     '/manifest.webmanifest',
     '/assets/images/icons/favicon.ico',
     '/assets/images/icons/icon-16x16.png',
