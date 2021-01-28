@@ -5,6 +5,26 @@
     "lang": "en-us",
     "icons": [
         {
+            "src": "../assets/images/icons/icon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        },
+        {
+            "src": "../assets/images/icons/icon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "../assets/images/icons/favicon.ico",
+            "sizes": "48x48",
+            "type": "image/ico"
+        },
+        {
+            "src": "../assets/images/icons/apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        },
+        {
             "src": "../assets/images/icons/icon-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
