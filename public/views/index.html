@@ -16,13 +16,13 @@
   <link rel="stylesheet" href="../assets/css/styles.css">
   <!-- Webmanifest -->
   <link rel="manifest" href="../manifest.webmanifest" />
-  <title>Quick Budget</title>
+  <title>Follow your Money</title>
 </head>
 
 <body>
   <nav class="navbar">
     <section>
-      <h1>Spending</h1>
+      <h1>Follow your Money</h1>
     </section>
     
     <section class="total">
@@ -39,15 +39,17 @@
         <section class="form">
           <input type="text" id="t-name" placeholder="Name of transaction" />
           <input type="number" min="0" id="t-amount" placeholder="Transaction amount" />
-          <button id="add-btn"><i class="fa fa-plus buttons"></i> Add Funds</button>
-          <button id="sub-btn"><i class="fa fa-minus"></i> Subtract Funds</button>
+          <button id="add-btn"><i class="fa fa-plus buttons"></i></button>
+          <button id="sub-btn"><i class="fa fa-minus"></i></button>
           <p class="error"></p>
         </section>
     
         <section class="transactions">
           <table>
             <thead>
+              <th>Date</th>
               <th>Transaction</th>
+              <th>Category</th>
               <th>Amount</th>
             </thead>
             <tbody id="tbody">
@@ -57,7 +59,9 @@
         </section>
      </aside>
       
-      <canvas id="myChart"></canvas>
+     <section class="chart-container">
+       <canvas id="myChart"></canvas>
+      </section>
     </section>
   </main>
 

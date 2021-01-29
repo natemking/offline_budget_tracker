@@ -1,4 +1,5 @@
 let transactions = [];
+let catagories = [];
 let myChart;
 
 fetch("/api/transaction")
@@ -24,6 +25,10 @@ function populateTotal() {
   totalEl.textContent = total;
 }
 
+const formatDate = (date) => {
+  return `${date.slice(5,7)}/${date.slice(8,10)}/${date.slice(2,4)}`
+}
+
 function populateTable() {
   let tbody = document.querySelector("#tbody");
   tbody.innerHTML = "";
@@ -32,8 +37,10 @@ function populateTable() {
     // create and populate a table row
     let tr = document.createElement("tr");
     tr.innerHTML = `
+      <td id="date">${formatDate(transaction.date)}</td>
       <td>${transaction.name}</td>
-      <td>${transaction.value}</td>
+      <td><select><option>Test</option></select></td>
+      <td>$${transaction.value}</td>
     `;
 
     tbody.appendChild(tr);
@@ -66,14 +73,17 @@ function populateChart() {
 
   myChart = new Chart(ctx, {
     type: 'line',
-      data: {
-        labels,
-        datasets: [{
-            label: "Total Over Time",
-            fill: true,
-            backgroundColor: "#e0afa0",
-            data
-        }]
+    data: {
+      labels,
+      datasets: [{
+          label: "Total Over Time",
+          fill: true,
+          backgroundColor: "#e0afa0",
+          data
+      }]
+    },
+    options: {
+      responsive: true
     }
   });
 }
