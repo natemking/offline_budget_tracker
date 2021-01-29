@@ -5,45 +5,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="theme-color" content="#317EFB">
+  <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/icons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/icons/icon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/icons/icon-16x16.png">
   <link rel="shortcut icon" href="../assets/images/icons/icon-192x192.png" type="image/x-icon">
-
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- CSS -->
   <link rel="stylesheet" href="../assets/css/styles.css">
+  <!-- Webmanifest -->
   <link rel="manifest" href="../manifest.webmanifest" />
-
-  <title>Budget Tracker</title>
+  <title>Quick Budget</title>
 </head>
+
 <body>
-  <section class="wrapper">
+  <nav class="navbar">
+    <section>
+      <h1>Quick Budget</h1>
+    </section>
+    
     <section class="total">
       <section class="total">Your total is: $<span id="total">0</span></section>
     </section>
-
-    <section class="form">
-      <input type="text" id="t-name" placeholder="Name of transaction" />
-      <input type="number" min="0" id="t-amount" placeholder="Transaction amount" />
-      <button id="add-btn"><i class="fa fa-plus buttons"></i> Add Funds</button>
-      <button id="sub-btn"><i class="fa fa-minus"></i> Subtract Funds</button>
-      <p class="error"></p>
+  </nav>
+  <main>
+    <section class="wrapper">
+      <!-- <section class="total">
+        <section class="total">Your total is: $<span id="total">0</span></section>
+      </section> -->
+  
+      <section class="form">
+        <input type="text" id="t-name" placeholder="Name of transaction" />
+        <input type="number" min="0" id="t-amount" placeholder="Transaction amount" />
+        <button id="add-btn"><i class="fa fa-plus buttons"></i> Add Funds</button>
+        <button id="sub-btn"><i class="fa fa-minus"></i> Subtract Funds</button>
+        <p class="error"></p>
+      </section>
+  
+      <section class="transactions">
+        <table>
+          <thead>
+            <th>Transaction</th>
+            <th>Amount</th>
+          </thead>
+          <tbody id="tbody">
+            
+          </tbody>
+        </table>
+      </section>
+      
+      <canvas id="myChart"></canvas>
     </section>
-
-    <section class="transactions">
-      <table>
-        <thead>
-          <th>Transaction</th>
-          <th>Amount</th>
-        </thead>
-        <tbody id="tbody">
-          
-        </tbody>
-      </table>
-    </section>
-    
-    <canvas id="myChart"></canvas>
-  </section>
+  </main>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="../assets/js/indexedDB.js"></script>

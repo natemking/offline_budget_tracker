@@ -1,6 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans+Caption:wght@400;700&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Global */
 body {
   font-size: 120%;
-  font-family: Arial;
+  font-family: 'Open Sans', sans-serif;
 }
 
 button, input {
@@ -21,6 +36,20 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+
+/* Classes */
+.navbar {
+  font-family: 'PT Sans Caption', sans-serif;
+  color: #463f3a;
+  background-color: #bcb8b1;
+  padding-left: 10px;
+  padding-right: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 
 .error {
   color: red;
@@ -48,4 +77,20 @@ tr:nth-child(even) {
   overflow: auto;
   width: 90%;
   margin: 0 auto;
+}
+
+
+@media (max-width: 480px) {
+  .navbar {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .navbar h1 {
+    margin: 10px;
+}
+  .total {
+    font-size: calc(20px + 2vw);
+    margin-bottom: 5px;
+  }
 }
