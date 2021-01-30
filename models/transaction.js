@@ -5,6 +5,11 @@ module.exports = (mongoose, Schema) => {
                 trim: true,
                 required: "Enter a name for transaction"
             },
+            category: {
+                type: String,
+                trim: true,
+                required: "Enter a category for transaction"
+            },
             value: {
                 type: Number,
                 required: "Enter an amount"

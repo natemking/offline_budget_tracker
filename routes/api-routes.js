@@ -20,6 +20,7 @@ router.route('/api/transaction')
       });
   })
   .post(({ body }, res) => {
+    console.log(body);
     db.Transaction.create(body)
       .then(dbTransaction => {
         res.json(dbTransaction);

@@ -18,9 +18,12 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-button, input {
+button, input, select {
   font-size: 100%;
-  font-family: Arial;
+}
+
+aside {
+  width: 60%
 }
 
 table {
@@ -35,6 +38,10 @@ td, th {
 
 tr:nth-child(even) {
   background-color: #dddddd;
+}
+
+#date {
+  width: 10%;
 }
 
 /* Classes */
@@ -58,7 +65,6 @@ tr:nth-child(even) {
 
 .wrapper {
   margin: 0 auto;
-  /* max-width: 825px; */
   text-align: center;
   display: flex;
   flex-direction: row;
@@ -77,14 +83,18 @@ tr:nth-child(even) {
 
 .transactions {
   text-align: left;
-  max-height: 300px;
+  /* max-height: 300px; */
   overflow: auto;
   width: 90%;
   margin: 0 auto;
 }
 
-#myChart {
-  max-width: 600px;
+.chart-container {
+  position: relative; 
+  height:20vh; 
+  width:40vw;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 480px) {
@@ -110,8 +120,11 @@ tr:nth-child(even) {
     display: block;
   }
 
-  #myChart {
-    margin: 0 auto;
-    padding-top: 20px;
+  .chart-container {
+    width:100%;
+  }
+  
+  aside {
+    width: 100%
   }
 }

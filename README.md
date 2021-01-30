@@ -62,10 +62,11 @@ Licensed under the GNU GPLv3.0 License. Copyright © 2020
 
 * [Add a manifest ](https://web.dev/add-manifest/)
 
-* [Creating relationships w/ Mongoose](https://dev.to/oluseyeo/how-to-create-relationships-with-mongoose-and-node-js-11c8)  
+* [Capitalize the first letter of every word with one line of code](https://www.freecodecamp.org/news/how-to-capitalize-words-in-javascript/)  
 
-* [FindByIdAndUpdate $push in Mongoose](https://stackoverflow.com/questions/15621970/pushing-object-into-array-schema-in-mongoose)
-* [Mongoose CRUD](https://coursework.vschool.io/mongoose-crud/)
+* [Random Color Palate](https://mycolor.space/)
+
+* [Merge Multiple objects w/ sum of values by using the reduce() method](https://dev.to/ramonak/javascript-how-to-merge-multiple-objects-with-sum-of-values-43fd)
 
 * [Limit the most recent results in ascending order w/ Mongoose](https://stackoverflow.com/questions/39069491/how-to-get-last-5-docs-in-sequential-order) -->
 
