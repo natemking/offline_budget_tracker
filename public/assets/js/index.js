@@ -39,7 +39,7 @@ function populateTable() {
     tr.innerHTML = `
       <td id="date">${formatDate(transaction.date)}</td>
       <td>${transaction.name}</td>
-      <td><select><option>Test</option></select></td>
+      <td>${transaction.category}</td>
       <td>$${transaction.value}</td>
     `;
 
@@ -90,11 +90,11 @@ function populateChart() {
 
 function sendTransaction(isAdding) {
   let nameEl = document.querySelector("#t-name");
+  let catEl = document.querySelector('#t-cat');
   let amountEl = document.querySelector("#t-amount");
   let errorEl = document.querySelector(".form .error");
-
   // validate form
-  if (nameEl.value === "" || amountEl.value === "") {
+  if (nameEl.value === "" || catEl.value === "" || amountEl.value === "") {
     errorEl.textContent = "Missing Information";
     return;
   }
@@ -105,6 +105,7 @@ function sendTransaction(isAdding) {
   // create record
   let transaction = {
     name: nameEl.value,
+    category: catEl.value,
     value: amountEl.value,
     date: new Date().toISOString()
   };
@@ -141,6 +142,7 @@ function sendTransaction(isAdding) {
     else {
       // clear form
       nameEl.value = "";
+      catEl.value = '';
       amountEl.value = "";
     }
   })
@@ -150,6 +152,7 @@ function sendTransaction(isAdding) {
 
     // clear form
     nameEl.value = "";
+    catEl.value = '';
     amountEl.value = "";
   });
 }

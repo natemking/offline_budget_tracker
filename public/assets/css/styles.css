@@ -18,9 +18,8 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-button, input {
+button, input, select {
   font-size: 100%;
-  font-family: Arial;
 }
 
 aside {
@@ -37,13 +36,8 @@ td, th {
   padding: 8px;
 }
 
-tr:nth-child(even), tr:nth-child(even) select {
+tr:nth-child(even) {
   background-color: #dddddd;
-}
-
-select {
-    border: 0;
-    width: 100%;
 }
 
 #date {
