@@ -4,61 +4,61 @@ let db = require("../models");
 let budgetSeed = [
     {
         name: 'Paycheck',
-        category: 'Income',
+        category: 'income',
         value: 1500, 
         date: new Date().setDate(new Date().getDate() - 15)
     },
     {
         name: 'Fuel',
-        category: 'Transportation',
+        category: 'transportation',
         value: -30,
         date: new Date().setDate(new Date().getDate() - 10)
     },
     {
         name: 'Gas bill',
-        category: 'Utilities',
+        category: 'utilities',
         value: -50,
         date: new Date().setDate(new Date().getDate() - 8)
     },
     {
         name: 'Electric bill',
-        category: 'Utilities',
+        category: 'utilities',
         value: -85,
         date: new Date().setDate(new Date().getDate() - 8)
     },
     {
         name: 'FIOS',
-        category: 'Internet',
+        category: 'internet',
         value: -40,
         date: new Date().setDate(new Date().getDate() - 8)
     },
     {
         name: 'Groceries',
-        category: 'Food',
+        category: 'food',
         value: -135,
         date: new Date().setDate(new Date().getDate() - 6)
     },
     {
         name: 'Money Chris owed me',
-        category: 'Income',
+        category: 'income',
         value: 50,
         date: new Date().setDate(new Date().getDate() - 5)
     },
     {
         name: 'Rent',
-        category: 'Rent',
+        category: 'rent',
         value: -1200,
         date: new Date().setDate(new Date().getDate() - 4)
     },
     {
         name: 'Martha Bar',
-        category: 'Dining out',
+        category: 'dining out',
         value: -20,
         date: new Date().setDate(new Date().getDate() - 4)
     },
     {
         name: 'Paycheck',
-        category: 'Income',
+        category: 'income',
         value: 1500,
         date: new Date().setDate(new Date().getDate() - 1)
     }

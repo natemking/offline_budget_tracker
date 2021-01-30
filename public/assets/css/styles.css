@@ -65,7 +65,6 @@ tr:nth-child(even) {
 
 .wrapper {
   margin: 0 auto;
-  /* max-width: 825px; */
   text-align: center;
   display: flex;
   flex-direction: row;
@@ -84,7 +83,7 @@ tr:nth-child(even) {
 
 .transactions {
   text-align: left;
-  max-height: 300px;
+  /* max-height: 300px; */
   overflow: auto;
   width: 90%;
   margin: 0 auto;
@@ -94,6 +93,8 @@ tr:nth-child(even) {
   position: relative; 
   height:20vh; 
   width:40vw;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 480px) {

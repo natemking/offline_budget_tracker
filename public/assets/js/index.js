@@ -1,8 +1,8 @@
 let transactions = [];
-let catagories = [];
 let myChart;
+let myDonut;
 
-fetch("/api/transaction")
+fetch('/api/transaction')
   .then(response => {
     return response.json();
   })
@@ -13,6 +13,7 @@ fetch("/api/transaction")
     populateTotal();
     populateTable();
     populateChart();
+    populateDonut();
   });
 
 function populateTotal() {
@@ -21,7 +22,7 @@ function populateTotal() {
     return total + parseInt(t.value);
   }, 0);
 
-  let totalEl = document.querySelector("#total");
+  let totalEl = document.querySelector('#total');
   totalEl.textContent = total;
 }
 
@@ -30,16 +31,17 @@ const formatDate = (date) => {
 }
 
 function populateTable() {
-  let tbody = document.querySelector("#tbody");
-  tbody.innerHTML = "";
+  let tbody = document.querySelector('#tbody');
+  tbody.innerHTML = '';
 
   transactions.forEach(transaction => {
-    // create and populate a table row
-    let tr = document.createElement("tr");
+    // create and populate a table row w/ names, catagories with uppercased first letter of each word, & values
+    let tr = document.createElement('tr');
+    //Pull in the  
     tr.innerHTML = `
-      <td id="date">${formatDate(transaction.date)}</td>
+      <td id='date'>${formatDate(transaction.date)}</td>
       <td>${transaction.name}</td>
-      <td>${transaction.category}</td>
+      <td>${transaction.category.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())}</td>
       <td>$${transaction.value}</td>
     `;
 
@@ -69,16 +71,16 @@ function populateChart() {
     myChart.destroy();
   }
 
-  let ctx = document.getElementById("myChart").getContext("2d");
+  let ctx = document.getElementById('myChart').getContext('2d');
 
   myChart = new Chart(ctx, {
     type: 'line',
     data: {
       labels,
       datasets: [{
-          label: "Total Over Time",
+          label: 'Total Over Time',
           fill: true,
-          backgroundColor: "#e0afa0",
+          backgroundColor: '#e0afa0',
           data
       }]
     },
@@ -88,24 +90,83 @@ function populateChart() {
   });
 }
 
+const populateDonut = () => {
+  //Color array for donut chart
+  const colors = ['#463f3a', '#8a817c', '#758b69', '#bcb8b1', '#4f0113', '#b991c9', '#e0afa0', '#c6949a', '#a27f93', '#7a6c86', '#525a72', '#2f4858', '#006796', '#546fa7', '#9177a9', '#ba84a4', '#d4979e', '#aac19d', '#e56d4b', '#f4f3ee']
+
+  //Filter out all category and values that are not income
+  let catValue = []
+  transactions.forEach((t) => {
+    if (t.category !== 'income'){
+      catValue.push({[t.category]: t.value})
+    }
+  });
+
+  //Function to find duplicate catagories, combine their values and merge as one object
+  const mergeCatagories = data => {
+    const result = {}
+    data.forEach(category => { 
+      for (let [key, value] of Object.entries(category)) {
+        if (result[key]) { 
+          result[key] += value;
+        } else { 
+          result[key] = value;
+        }
+      }
+    });
+    return result
+  }
+  
+  //Merge catagories on filtered data
+  const data = mergeCatagories(catValue);
+
+  //If donut chart exists delete
+  if (myDonut) {
+    myDonut.destroy();
+  }
+
+  const ctx = document.getElementById('myDonut').getContext('2d');
+  //Create donut chart with user data
+  myDonut = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: Object.keys(data).reverse(),
+      datasets: [
+        {
+          label: 'Totals by Category',
+          backgroundColor: colors,
+          data: Object.values(data).reverse()
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Totals by Category'
+      }
+    }
+  });
+}
+
+
 function sendTransaction(isAdding) {
-  let nameEl = document.querySelector("#t-name");
+  let nameEl = document.querySelector('#t-name');
   let catEl = document.querySelector('#t-cat');
-  let amountEl = document.querySelector("#t-amount");
-  let errorEl = document.querySelector(".form .error");
+  let amountEl = document.querySelector('#t-amount');
+  let errorEl = document.querySelector('.form .error');
   // validate form
-  if (nameEl.value === "" || catEl.value === "" || amountEl.value === "") {
-    errorEl.textContent = "Missing Information";
+  if (nameEl.value === '' || catEl.value === '' || amountEl.value === '') {
+    errorEl.textContent = 'Missing Information';
     return;
   }
   else {
-    errorEl.textContent = "";
+    errorEl.textContent = '';
   }
 
   // create record
   let transaction = {
     name: nameEl.value,
-    category: catEl.value,
+    category: catEl.value.trim().toLowerCase(),
     value: amountEl.value,
     date: new Date().toISOString()
   };
@@ -120,16 +181,18 @@ function sendTransaction(isAdding) {
 
   // re-run logic to populate ui with new record
   populateChart();
+  populateDonut();
   populateTable();
   populateTotal();
   
+  
   // also send to server
-  fetch("/api/transaction", {
-    method: "POST",
+  fetch('/api/transaction', {
+    method: 'POST',
     body: JSON.stringify(transaction),
     headers: {
-      Accept: "application/json, text/plain, */*",
-      "Content-Type": "application/json"
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/json'
     }
   })
   .then(response => {    
@@ -137,13 +200,13 @@ function sendTransaction(isAdding) {
   })
   .then(data => {
     if (data.errors) {
-      errorEl.textContent = "Missing Information";
+      errorEl.textContent = 'Missing Information';
     }
     else {
       // clear form
-      nameEl.value = "";
+      nameEl.value = '';
       catEl.value = '';
-      amountEl.value = "";
+      amountEl.value = '';
     }
   })
   .catch(err => {
@@ -151,16 +214,16 @@ function sendTransaction(isAdding) {
     saveRecord(transaction);
 
     // clear form
-    nameEl.value = "";
+    nameEl.value = '';
     catEl.value = '';
-    amountEl.value = "";
+    amountEl.value = '';
   });
 }
 
-document.querySelector("#add-btn").onclick = function() {
+document.querySelector('#add-btn').onclick = function() {
   sendTransaction(true);
 };
 
-document.querySelector("#sub-btn").onclick = function() {
+document.querySelector('#sub-btn').onclick = function() {
   sendTransaction(false);
 };
