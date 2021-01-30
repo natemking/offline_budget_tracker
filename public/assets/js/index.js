@@ -102,29 +102,22 @@ const populateDonut = () => {
     }
   });
 
-  //Function to find duplicate catagories, combine their values and merge as one object
-  const mergeCatagories = data => {
-    const result = {}
-    data.forEach(category => { 
-      for (let [key, value] of Object.entries(category)) {
-        if (result[key]) { 
-          result[key] += value;
-        } else { 
-          result[key] = value;
-        }
+  //Reduce the results so that any duplicate catagories are returned as one and their values combined
+  const data = catValue.reduce((finalObj, obj) => {
+    for (const [category, value] of Object.entries(obj)) {
+      if (!finalObj[category]) {
+        finalObj[category] = 0;
       }
-    });
-    return result
-  }
-  
-  //Merge catagories on filtered data
-  const data = mergeCatagories(catValue);
+      finalObj[category] += value;
+    }
+    return finalObj;
+  }, {});
 
   //If donut chart exists delete
   if (myDonut) {
     myDonut.destroy();
   }
-
+  //Context variable for chart location in DOM
   const ctx = document.getElementById('myDonut').getContext('2d');
   //Create donut chart with user data
   myDonut = new Chart(ctx, {
@@ -133,7 +126,7 @@ const populateDonut = () => {
       labels: Object.keys(data).reverse(),
       datasets: [
         {
-          label: 'Totals by Category',
+          label: 'Total Spending by Category',
           backgroundColor: colors,
           data: Object.values(data).reverse()
         }
@@ -142,7 +135,7 @@ const populateDonut = () => {
     options: {
       title: {
         display: true,
-        text: 'Totals by Category'
+        text: 'Total Spending by Category'
       }
     }
   });

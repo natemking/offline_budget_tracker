@@ -66,7 +66,7 @@ Licensed under the GNU GPLv3.0 License. Copyright © 2020
 
 * [Random Color Palate](https://mycolor.space/)
 
-* [Merge Multiple objects w/ sum of values](https://dev.to/ramonak/javascript-how-to-merge-multiple-objects-with-sum-of-values-43fd)
+* [Merge Multiple objects w/ sum of values by using the reduce() method](https://dev.to/ramonak/javascript-how-to-merge-multiple-objects-with-sum-of-values-43fd)
 
 * [Limit the most recent results in ascending order w/ Mongoose](https://stackoverflow.com/questions/39069491/how-to-get-last-5-docs-in-sequential-order) -->
 
