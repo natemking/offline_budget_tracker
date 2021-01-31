@@ -68,7 +68,8 @@ Licensed under the GNU GPLv3.0 License. Copyright © 2020
 
 * [Merge Multiple objects w/ sum of values by using the reduce() method](https://dev.to/ramonak/javascript-how-to-merge-multiple-objects-with-sum-of-values-43fd)
 
-* [Using Fetch w/ async/await](https://dmitripavlutin.com/javascript-fetch-async-await/) -->
+* [Using Fetch w/ async/await](https://dmitripavlutin.com/javascript-fetch-async-await/) 
+* [Auto/ being applied the webpack-pwa-manifest icon file path output](https://github.com/arthurbergmz/webpack-pwa-manifest/issues/149)-->
 
 
 ---

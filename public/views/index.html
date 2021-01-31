@@ -4,18 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="theme-color" content="#317EFB">
+  <meta name="theme-color" content="#bcb8b1">
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/icons/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/icons/icon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/icons/icon-16x16.png">
-  <link rel="shortcut icon" href="../assets/images/icons/icon-192x192.png" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/icons/favicon-16x16.png">
+  <link rel="shortcut icon" href="../dist/icon_192x192.png" type="image/x-icon">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- CSS -->
   <link rel="stylesheet" href="../assets/css/styles.css">
   <!-- Webmanifest -->
-  <link rel="manifest" href="../manifest.webmanifest" />
+  <link rel="manifest" href="../dist/manifest.webmanifest" />
   <title>Follow your Money</title>
 </head>
 
@@ -73,13 +73,13 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="../assets/js/indexedDB.js"></script>
-  <script src="../assets/js/index.js"></script>
+  <script src="../dist/bundle.js"></script>
   <!-- Register the service worker -->
   <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", async () => {
         try {
-          const reg = await navigator.serviceWorker.register("../service-worker.js");
+          const reg = await navigator.serviceWorker.register("../dist/service-worker.js");
           console.log('ServiceWorker registration successful with scope: ', reg.scope);
         } catch (err) { console.error('ServiceWorker registration failed:', err) }
       });
