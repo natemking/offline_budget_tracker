@@ -15,8 +15,8 @@
     "type": "git",
     "url": "git+https://github.com/natemking/offline_budget_tracker"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Nate M King",
+  "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/natemking/offline_budget_tracker/issues"
   },
