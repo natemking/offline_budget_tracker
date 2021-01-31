@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,27 +17,25 @@
   <link rel="stylesheet" href="../assets/css/styles.css">
   <!-- Webmanifest -->
   <link rel="manifest" href="../dist/manifest.webmanifest" />
-  <title>Follow your Money</title>
+  <title>Follow Your Money</title>
 </head>
 
 <body>
   <nav class="navbar">
     <section>
-      <h1>Follow your Money</h1>
+      <h1>Follow Your Money</h1>
     </section>
-    
+
     <section class="total">
       <section class="total">Your total is: $<span id="total">0</span></section>
     </section>
   </nav>
 
   <main>
+
     <section class="wrapper">
-      <!-- <section class="total">
-        <section class="total">Your total is: $<span id="total">0</span></section>
-      </section> -->
-  
-     <aside>
+
+      <aside>
         <section class="form">
           <input type="text" id="t-name" placeholder="Name of transaction" />
           <input type="text" id="t-cat" placeholder="Transaction category" />
@@ -48,7 +47,7 @@
           <button id="sub-btn"><i class="fa fa-minus"></i></button>
           <p class="error"></p>
         </section>
-    
+
         <section class="transactions">
           <table>
             <thead>
@@ -58,28 +57,28 @@
               <th>Amount</th>
             </thead>
             <tbody id="tbody">
-              
+
             </tbody>
           </table>
         </section>
-     </aside>
-      
-     <section class="chart-container">
-       <canvas id="myChart"></canvas>
-       <canvas id="myDonut"></canvas>
+      </aside>
+
+      <section class="chart-container">
+        <canvas id="myChart"></canvas>
+        <canvas id="myDonut"></canvas>
       </section>
     </section>
+    
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-  <script src="../assets/js/indexedDB.js"></script>
   <script src="../dist/bundle.js"></script>
   <!-- Register the service worker -->
   <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", async () => {
         try {
-          const reg = await navigator.serviceWorker.register("../dist/service-worker.js");
+          const reg = await navigator.serviceWorker.register("../service-worker.js");
           console.log('ServiceWorker registration successful with scope: ', reg.scope);
         } catch (err) { console.error('ServiceWorker registration failed:', err) }
       });
@@ -87,4 +86,5 @@
   </script>
 
 </body>
+
 </html>
