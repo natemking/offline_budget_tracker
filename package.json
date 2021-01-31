@@ -9,7 +9,7 @@
     "seed": "node ./seeders/seed.js",
     "webpack": "webpack --watch",
     "build": "npm run webpack", 
-    "heroku-postbuild": "echo Skip build on Heroku"
+    "heroku-postbuild": "webpack -p"
   },
   "repository": {
     "type": "git",
