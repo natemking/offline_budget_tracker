@@ -8,7 +8,8 @@
     "start": "node server.js",
     "seed": "node ./seeders/seed.js",
     "webpack": "webpack --watch",
-    "build": "npm run webpack"
+    "build": "npm run webpack", 
+    "heroku-postbuild": "echo Skip build on Heroku"
   },
   "repository": {
     "type": "git",
