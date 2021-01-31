@@ -4,18 +4,18 @@ const FILES_TO_CACHE = [
     '/assets/css/styles.css',
     '/dist/bundle.js',
     '/dist/manifest.webmanifest',
-    '/assets/images/icons/favicon.ico',
-    '/assets/images/icons/favicon-16x16.png',
-    '/assets/images/icons/favicon-32x32.png',
-    '/assets/images/icons/apple-touch-icon.png',
-    '/dist/icon_72x72.png',
-    '/dist/icon_96X96.png',
-    '/dist/icon_128x128.png',
-    '/dist/icon_144x144.png',
-    '/dist/icon_152x152.png',
-    '/dist/icon_192x192.png',
-    '/dist/icon_384x384.png',
-    '/dist/icon_512x512.png'
+    // '/assets/images/icons/favicon.ico',
+    // '/assets/images/icons/favicon-16x16.png',
+    // '/assets/images/icons/favicon-32x32.png',
+    // '/assets/images/icons/apple-touch-icon.png',
+    // '/dist/icon_72x72.png',
+    // '/dist/icon_96X96.png',
+    // '/dist/icon_128x128.png',
+    // '/dist/icon_144x144.png',
+    // '/dist/icon_152x152.png',
+    // '/dist/icon_192x192.png',
+    // '/dist/icon_384x384.png',
+    // '/dist/icon_512x512.png'
 ];
 
 const CACHE_NAME = 'static-cache-v2';
