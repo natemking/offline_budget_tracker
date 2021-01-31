@@ -3,7 +3,7 @@
 import './indexedDB';
 import { saveRecord } from './indexedDB';
 import { populateTotal } from './total';
-import { populateTable } from './table';
+import { tableBodyEl, populateTable, editCell, cancelEditCell } from './table';
 import { populateChart, populateDonut } from './chart';
 
 //*** API ***//
@@ -107,3 +107,13 @@ document.querySelector('#add-btn').onclick = function() {
 document.querySelector('#sub-btn').onclick = function() {
   sendTransaction(false);
 };
+
+//Edit cell when clicked
+tableBodyEl.addEventListener('click', e => {
+  editCell(e)
+});
+
+//Cancel cell edit if clicked anywhere outside of the table body
+document.addEventListener('click', e => {
+  cancelEditCell(e);
+});
