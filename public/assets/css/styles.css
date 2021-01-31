@@ -50,11 +50,17 @@ button, input, select {
   justify-content: space-around;
 }
 
-/* Table */
 aside {
   width: 60%
 }
 
+/* Transaction Input */
+.form {
+  margin-top: 25px;
+  width: 100%;
+}
+
+/* Table */
 table {
   width: 100%;
 }
@@ -77,14 +83,8 @@ tr:nth-child(even) {
   color: red;
 }
 
-.form {
-  margin-top: 25px;
-  width: 100%;
-}
-
 .transactions {
   text-align: left;
-  /* max-height: 300px; */
   overflow: auto;
   width: 90%;
   margin: 0 auto;
