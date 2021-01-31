@@ -8,7 +8,7 @@ const FILES_TO_CACHE = [
     '/assets/images/icons/favicon-16x16.png',
     '/assets/images/icons/favicon-32x32.png',
     '/assets/images/icons/apple-touch-icon.png',
-    // '/dist/icon_72x72.png',
+    '/dist/icon_72x72.png',
     // '/dist/icon_96X96.png',
     // '/dist/icon_128x128.png',
     // '/dist/icon_144x144.png',
