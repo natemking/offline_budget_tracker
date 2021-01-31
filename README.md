@@ -68,7 +68,10 @@ Licensed under the GNU GPLv3.0 License. Copyright © 2020
 
 * [Merge Multiple objects w/ sum of values by using the reduce() method](https://dev.to/ramonak/javascript-how-to-merge-multiple-objects-with-sum-of-values-43fd)
 
-* [Limit the most recent results in ascending order w/ Mongoose](https://stackoverflow.com/questions/39069491/how-to-get-last-5-docs-in-sequential-order) -->
+* [Using Fetch w/ async/await](https://dmitripavlutin.com/javascript-fetch-async-await/) 
+* [Auto/ being applied the webpack-pwa-manifest icon file path output](https://github.com/arthurbergmz/webpack-pwa-manifest/issues/149)
+* [Fix 'regenerator runtime is not defined error'](https://flaviocopes.com/parcel-regeneratorruntime-not-defined/)
+-->
 
 
 ---

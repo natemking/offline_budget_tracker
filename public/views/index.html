@@ -1,54 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="theme-color" content="#317EFB">
+  <meta name="theme-color" content="#bcb8b1">
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/icons/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/icons/icon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/icons/icon-16x16.png">
-  <link rel="shortcut icon" href="../assets/images/icons/icon-192x192.png" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/icons/favicon-16x16.png">
+  <link rel="shortcut icon" href="../dist/icon_192x192.png" type="image/x-icon">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- CSS -->
   <link rel="stylesheet" href="../assets/css/styles.css">
   <!-- Webmanifest -->
-  <link rel="manifest" href="../manifest.webmanifest" />
-  <title>Follow your Money</title>
+  <link rel="manifest" href="../dist/manifest.webmanifest" />
+  <title>Follow Your Money</title>
 </head>
 
 <body>
+
+  <!-- Navbar -->
   <nav class="navbar">
+
+    <!-- Heading -->
     <section>
-      <h1>Follow your Money</h1>
+      <h1>Follow Your Money</h1>
     </section>
-    
+
+    <!-- Totals -->
     <section class="total">
       <section class="total">Your total is: $<span id="total">0</span></section>
     </section>
+
   </nav>
 
   <main>
+    
+    <!-- Main container -->
     <section class="wrapper">
-      <!-- <section class="total">
-        <section class="total">Your total is: $<span id="total">0</span></section>
-      </section> -->
-  
-     <aside>
+
+      <aside>
+
+        <!-- Transaction input -->
         <section class="form">
           <input type="text" id="t-name" placeholder="Name of transaction" />
           <input type="text" id="t-cat" placeholder="Transaction category" />
           <input type="number" min="0" id="t-amount" placeholder="Transaction amount" />
-          <!-- <select id="t-cat">
-            <option value="null" disabled selected>Category</option>
-          </select> -->
           <button id="add-btn"><i class="fa fa-plus buttons"></i></button>
           <button id="sub-btn"><i class="fa fa-minus"></i></button>
           <p class="error"></p>
         </section>
-    
+
+        <!-- Table -->
         <section class="transactions">
           <table>
             <thead>
@@ -58,22 +64,26 @@
               <th>Amount</th>
             </thead>
             <tbody id="tbody">
-              
             </tbody>
           </table>
         </section>
-     </aside>
-      
-     <section class="chart-container">
-       <canvas id="myChart"></canvas>
-       <canvas id="myDonut"></canvas>
+
+      </aside>
+
+      <!-- Chart -->
+      <section class="chart-container">
+        <canvas id="myChart"></canvas>
+        <canvas id="myDonut"></canvas>
       </section>
+
     </section>
+    
   </main>
 
+  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-  <script src="../assets/js/indexedDB.js"></script>
-  <script src="../assets/js/index.js"></script>
+  <!-- Custom js -->
+  <script src="../dist/bundle.js"></script>
   <!-- Register the service worker -->
   <script>
     if ("serviceWorker" in navigator) {
@@ -87,4 +97,5 @@
   </script>
 
 </body>
+
 </html>
