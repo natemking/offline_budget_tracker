@@ -90,6 +90,22 @@ tr:nth-child(even) {
   margin: 0 auto;
 }
 
+.td-data {
+  position: relative;
+}
+
+#delete {
+  position: absolute;
+  top: -3px;
+  right: 4px;
+  font-size: 16px;
+  color: rgba(0,0,0,.2)
+}
+
+#delete :hover {
+  cursor: pointer;
+}
+
 /* Chart */
 .chart-container {
   position: relative; 

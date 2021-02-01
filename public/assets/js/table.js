@@ -18,7 +18,10 @@ export function populateTable(transactions) {
             <td id=${transaction._id} data-type="date" class="td-data">${transaction.date.slice(5, 7)}/${transaction.date.slice(8, 10)}/${transaction.date.slice(2, 4)}</td>
             <td id=${transaction._id} data-type="name" class="td-data">${transaction.name}</td>
             <td id=${transaction._id} data-type="category" class="td-data">${transaction.category.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())}</td>
-            <td id=${transaction._id} data-type="value" class="td-data">$${transaction.value}</td>
+            <td id=${transaction._id} data-type="value" class="td-data">$${transaction.value}
+            <span id="delete"><i class="fa fa-times" aria-hidden="true"></i>
+</span>
+            </td>
         `;
         //Append table data to parent
         tableBodyEl.appendChild(tr);
