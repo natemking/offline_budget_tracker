@@ -1,7 +1,9 @@
 import { saveRecord } from './indexedDB';
 import { populateChart, populateDonut } from './chart';
 import { populateTotal } from './total';
+
 export const tableBodyEl = document.getElementById('tbody');
+
 let previousCell;
 let previousValue;
 let currentCell;

@@ -1,13 +1,14 @@
 //*** Modules ***//
 //===============//
-import './indexedDB';
-
+import './indexedDB'; //Whole file imported for bundling
 import { populateTotal } from './total';
 import { tableBodyEl, populateTable, editCell, cancelEditCell, deleteRow, sendTransaction } from './table';
 import { populateChart, populateDonut } from './chart';
 
 //*** READ ***//
 //============//
+//All other CRUD functions found in table.js. Left this here as I want this data to load on init//
+
 //Get the transactions data from the server and update table/totals/charts
 let transactions = [];
 
