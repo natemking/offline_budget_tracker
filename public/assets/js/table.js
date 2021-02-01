@@ -1,7 +1,84 @@
+import { saveRecord } from './indexedDB';
+import { populateChart, populateDonut } from './chart';
+import { populateTotal } from './total';
 export const tableBodyEl = document.getElementById('tbody');
 let previousCell;
 let previousValue;
 let currentCell;
+
+
+//*** CREATE ***//
+//==============//
+//Send the newly added transaction data to the server and update table/totals/charts
+export const sendTransaction = (isAdding, transactions) => {
+    let nameEl = document.querySelector('#t-name');
+    let catEl = document.querySelector('#t-cat');
+    let amountEl = document.querySelector('#t-amount');
+    let errorEl = document.querySelector('.form .error');
+    //Validate form
+    if (nameEl.value === '' || catEl.value === '' || amountEl.value === '') {
+        errorEl.textContent = 'Missing Information';
+        return;
+    }
+    else {
+        errorEl.textContent = '';
+    }
+
+    //Create record
+    let transaction = {
+        name: nameEl.value.trim(),
+        category: catEl.value.trim().toLowerCase(),
+        value: amountEl.value,
+        date: new Date().toISOString()
+    };
+
+    //If subtracting funds, convert amount to negative number
+    if (!isAdding) {
+        transaction.value *= -1;
+    }
+
+    //Add to beginning of current array of data
+    transactions.unshift(transaction);
+
+    //Re-run logic to populate ui with new record
+    populateChart(transactions);
+    populateDonut(transactions);
+    populateTable(transactions);
+    populateTotal(transactions);
+
+    //Also send to server
+    (async () => {
+        try {
+            //Send transaction data to server
+            const response = await fetch('/api/transaction', {
+                method: 'POST',
+                body: JSON.stringify(transaction),
+                headers: {
+                    Accept: 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                }
+            });
+            //Assign extracted JSON body content to var
+            const data = await response.json();
+            //If any errors, display warning to user, else clear the form data
+            data.errors ?
+                errorEl.textContent = 'Missing Information' :
+                // clear form
+                nameEl.value = '';
+            catEl.value = '';
+            amountEl.value = '';
+
+        } catch (err) {
+            // fetch failed, so save in indexed db
+            saveRecord(transaction);
+
+            // clear form
+            nameEl.value = '';
+            catEl.value = '';
+            amountEl.value = '';
+        }
+    })();
+}
 
 //Populate the table with the transactions data
 export function populateTable(transactions) {
@@ -32,6 +109,8 @@ export function populateTable(transactions) {
     });
 }
 
+//*** UPDATE ***//
+//==============//
 export const editCell = e => {
     //Var for the clicked on cells HTML <td> data
     const cell = e.target.closest('td');
@@ -113,6 +192,7 @@ export const editCell = e => {
     });
 }
 
+//Cancel edit
 export const cancelEditCell = (e) => {
     //Var for any clicks on the table body
     const tableClick = tableBodyEl.contains(e.target);
@@ -125,10 +205,14 @@ export const cancelEditCell = (e) => {
     
 }
 
+//*** DELETE ***//
+//==============//
 export const deleteRow = (e) => {
-
+    //If the use clicks on the 'x' icon delete the row
     if (e.target.tagName === 'I') {
+        //Set element id to var for req.param
         let id = e.target.parentNode.id;
+        //Send the collection id to be deleted to the server
         (async () => {
             try {
                 const response = await fetch(`/api/transaction/${id}`, {
@@ -145,3 +229,4 @@ export const deleteRow = (e) => {
         location.reload();
     }
 }
+
