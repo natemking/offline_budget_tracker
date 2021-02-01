@@ -71,6 +71,8 @@ Licensed under the GNU GPLv3.0 License. Copyright © 2020
 * [Using Fetch w/ async/await](https://dmitripavlutin.com/javascript-fetch-async-await/) 
 * [Auto/ being applied the webpack-pwa-manifest icon file path output](https://github.com/arthurbergmz/webpack-pwa-manifest/issues/149)
 * [Fix 'regenerator runtime is not defined error'](https://flaviocopes.com/parcel-regeneratorruntime-not-defined/)
+
+*[Use CSS to have an element appear on hover](https://stackoverflow.com/questions/19062120/make-a-div-appear-on-hover-over-another-div) 
 -->
 
 

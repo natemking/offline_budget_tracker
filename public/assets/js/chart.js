@@ -89,7 +89,8 @@ export const populateDonut = (transactions) => {
         options: {
             title: {
                 display: true,
-                text: 'Total Spending by Category'
+                text: 'Total Spending by Category',
+                responsive: true,
             }
         }
     });

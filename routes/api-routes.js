@@ -9,7 +9,7 @@ const db = require('../models');
 //*** API Routes ***//
 //==================//
 //Single transactions
-router.route('/api/transaction')
+router.route('/api/transaction/:id?')
   .get((req, res) => {
     db.Transaction.find({}).sort({ date: -1 })
       .then(dbTransaction => {
@@ -20,8 +20,23 @@ router.route('/api/transaction')
       });
   })
   .post(({ body }, res) => {
-    console.log(body);
     db.Transaction.create(body)
+      .then(dbTransaction => {
+        res.json(dbTransaction);
+      })
+      .catch(err => {
+        res.status(404).json(err);
+      });
+  })
+  .put(({ body, params }, res) => {
+    db.Transaction.findByIdAndUpdate(`${params.id}`, body ).then(dbTransaction => {
+        res.json(dbTransaction);
+      }).catch(err => {
+        res.status(404).json(err);
+      });
+  })
+  .delete(({ params },res) => {
+    db.Transaction.findByIdAndDelete(`${ params.id }`)
       .then(dbTransaction => {
         res.json(dbTransaction);
       })
