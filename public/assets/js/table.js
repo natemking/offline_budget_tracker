@@ -4,6 +4,7 @@ import { populateTotal } from './total';
 
 export const tableBodyEl = document.getElementById('tbody');
 
+let transactions = [];
 let previousCell;
 let previousValue;
 let currentCell;
@@ -12,7 +13,7 @@ let currentCell;
 //*** CREATE ***//
 //==============//
 //Send the newly added transaction data to the server and update table/totals/charts
-export const sendTransaction = (isAdding, transactions) => {
+export const sendTransaction = (isAdding) => {
     let nameEl = document.querySelector('#t-name');
     let catEl = document.querySelector('#t-cat');
     let amountEl = document.querySelector('#t-amount');
@@ -80,10 +81,14 @@ export const sendTransaction = (isAdding, transactions) => {
             amountEl.value = '';
         }
     })();
+    //If online refresh the page
+    if (navigator.onLine) {
+        location.reload();
+    }
 }
 
 //Populate the table with the transactions data
-export function populateTable(transactions) {
+export function populateTable() {
     tableBodyEl.innerHTML = '';
 
     //Iterate over all trans and populate table rows w/ formatted dates, names, catagories with upper-cased first letter of each word, & values
@@ -110,6 +115,25 @@ export function populateTable(transactions) {
         tableBodyEl.appendChild(tr);
     });
 }
+
+
+//** READ ***//
+//===========//
+//Get the transactions data from the server and update table/totals/charts
+export const getTransactions = async () => {
+    try {
+        //Fetch the data from the server
+        const response = await fetch('/api/transaction');
+        //Assign the transactions var w/ the extracted JSON body content of the response
+        transactions = await response.json();
+        //Call the functions to add the data to the DOM
+        populateTotal(transactions);
+        populateTable(transactions);
+        populateChart(transactions);
+        populateDonut(transactions);
+    } catch (err) { err => console.error(err) }
+};
+
 
 //*** UPDATE ***//
 //==============//
@@ -148,7 +172,9 @@ export const editCell = e => {
     //Bring new cell text input into focus
     currentCell.focus();
 
+    //Send updated data to the server
     currentCell.addEventListener('keypress', function (e) {
+        //When enter is pressed, update the body var to the value of the matching dataset
         if (e.key === 'Enter') {
             
             let body;
@@ -206,6 +232,7 @@ export const cancelEditCell = (e) => {
     }
     
 }
+
 
 //*** DELETE ***//
 //==============//
