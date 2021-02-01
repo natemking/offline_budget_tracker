@@ -1,10 +1,7 @@
 export const tableBodyEl = document.getElementById('tbody');
-export let newValue;
 let previousCell;
 let previousValue;
 let currentCell;
-
-
 
 //Populate the table with the transactions data
 export function populateTable(transactions) {
@@ -15,12 +12,19 @@ export function populateTable(transactions) {
         let tr = document.createElement('tr');
         tr.setAttribute("class", "table-row");
         tr.innerHTML = `
-            <td id=${transaction._id} data-type="date" class="td-data">${transaction.date.slice(5, 7)}/${transaction.date.slice(8, 10)}/${transaction.date.slice(2, 4)}</td>
-            <td id=${transaction._id} data-type="name" class="td-data">${transaction.name}</td>
-            <td id=${transaction._id} data-type="category" class="td-data">${transaction.category.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())}</td>
+            <td id=${transaction._id} data-type="date" class="td-data">
+                ${transaction.date.slice(5, 7)}/${transaction.date.slice(8, 10)}/${transaction.date.slice(2, 4)}
+            </td>
+            <td id=${transaction._id} data-type="name" class="td-data">
+                ${transaction.name}
+            </td>
+            <td id=${transaction._id} data-type="category" class="td-data">
+                ${transaction.category.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())}
+            </td>
             <td id=${transaction._id} data-type="value" class="td-data">$${transaction.value}
-            <span id="delete"><i class="fa fa-times" aria-hidden="true"></i>
-</span>
+                <span id=${transaction._id} class="delete">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </span>
             </td>
         `;
         //Append table data to parent
@@ -66,48 +70,47 @@ export const editCell = e => {
     currentCell.addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
             
-        let body;
+            let body;
 
-        switch (cell.dataset.type) {
-            case 'name':
-                body = {
-                    name: currentCell.value.trim()
-                }
-                break;
-            case 'category':
-                body = {
-                    category: currentCell.value.trim().toLowerCase()
-                }
-                break;
-            case 'value':
-                body = {
-                    value: currentCell.value
-                }
-                break;
-            default:
-                break;
+            switch (cell.dataset.type) {
+                case 'name':
+                    body = {
+                        name: currentCell.value.trim()
+                    }
+                    break;
+                case 'category':
+                    body = {
+                        category: currentCell.value.trim().toLowerCase()
+                    }
+                    break;
+                case 'value':
+                    body = {
+                        value: currentCell.value
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            //Send updated data to server
+            (async () => {
+                try {
+                    const response = await fetch(`/api/transaction/${cell.id}`, {
+                        method: 'PUT',
+                        body: JSON.stringify(body),
+                        headers: {
+                            Accept: 'application/json, text/plain, */*',
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                    const data = await response.json();
+                } catch (err) { err => {console.error(err) }}              
+            })();
+
+            location.reload();
         }
-        console.log(cell.id);
-       (async () => {
-          try {
-            const response = await fetch(`/api/transaction/${cell.id}`, {
-                method: 'PUT',
-                body: JSON.stringify(body),
-                headers: {
-                    Accept: 'application/json, text/plain, */*',
-                    'Content-Type': 'application/json'
-                }
-            });
-            const data = await response.json();
-            console.log(data);
-          } catch (err) { err => {console.error(err) }}              
-        })();
-       location.reload();
-    }
 
-});
-
-
+    });
 }
 
 export const cancelEditCell = (e) => {
@@ -120,4 +123,25 @@ export const cancelEditCell = (e) => {
         previousCell = undefined;
     }
     
+}
+
+export const deleteRow = (e) => {
+
+    if (e.target.tagName === 'I') {
+        let id = e.target.parentNode.id;
+        (async () => {
+            try {
+                const response = await fetch(`/api/transaction/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        Accept: 'application/json, text/plain, */*',
+                        'Content-Type': 'application/json'
+                    }
+                });
+                await response.json();
+            } catch (err) { err => { console.error(err) } }
+        })();
+
+        location.reload();
+    }
 }

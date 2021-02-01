@@ -3,7 +3,7 @@
 import './indexedDB';
 import { saveRecord } from './indexedDB';
 import { populateTotal } from './total';
-import { tableBodyEl, newValue, populateTable, editCell, cancelEditCell } from './table';
+import { tableBodyEl, populateTable, editCell, cancelEditCell, deleteRow } from './table';
 import { populateChart, populateDonut } from './chart';
 
 //*** API ***//
@@ -120,3 +120,7 @@ document.addEventListener('click', e => {
   cancelEditCell(e);
 });
 
+//Delete a row
+tableBodyEl.addEventListener('click', e => {
+  deleteRow(e);
+});

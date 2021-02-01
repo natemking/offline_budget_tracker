@@ -29,13 +29,21 @@ router.route('/api/transaction/:id?')
       });
   })
   .put(({ body, params }, res) => {
-    console.log(params.id, body);
     db.Transaction.findByIdAndUpdate(`${params.id}`, body ).then(dbTransaction => {
         res.json(dbTransaction);
       }).catch(err => {
         res.status(404).json(err);
       });
   })
+  .delete(({ params },res) => {
+    db.Transaction.findByIdAndDelete(`${ params.id }`)
+      .then(dbTransaction => {
+        res.json(dbTransaction);
+      })
+      .catch(err => {
+        res.status(404).json(err);
+      });
+  });
 
 //Bulk transactions
 router.post('/api/transaction/bulk', ({body}, res) => {
