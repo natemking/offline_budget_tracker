@@ -3,7 +3,7 @@
 import './indexedDB';
 import { saveRecord } from './indexedDB';
 import { populateTotal } from './total';
-import { tableBodyEl, populateTable, editCell, cancelEditCell } from './table';
+import { tableBodyEl, newValue, populateTable, editCell, cancelEditCell } from './table';
 import { populateChart, populateDonut } from './chart';
 
 //*** API ***//
@@ -42,7 +42,7 @@ const sendTransaction = isAdding => {
 
   //Create record
   let transaction = {
-    name: nameEl.value,
+    name: nameEl.value.trim(),
     category: catEl.value.trim().toLowerCase(),
     value: amountEl.value,
     date: new Date().toISOString()
@@ -108,12 +108,15 @@ document.querySelector('#sub-btn').onclick = function() {
   sendTransaction(false);
 };
 
-//Edit cell when clicked
+//Edit cell when clicked. Only when online.
 tableBodyEl.addEventListener('click', e => {
-  editCell(e)
+  if (navigator.onLine) {
+    editCell(e)
+  }
 });
 
 //Cancel cell edit if clicked anywhere outside of the table body
 document.addEventListener('click', e => {
   cancelEditCell(e);
 });
+
