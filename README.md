@@ -20,6 +20,9 @@ Homework # 18 PWA: Online/Offline Budget Trackers
  * [Description](#description)
     + [Scope of Work](#scope-of-work)
     + [Progressive Web App Summary](#progressive-web-app-summary)
+    + [Refactor and Redesign](#refactor-and-redesign)
+    + [Added Functionality](#added-functionality)
+    + [Modularization and Webpack](#modularization-and-webpack)
   * [Screenshots](#screenshots)
   * [Installation Notes](#installation-notes)
   * [License](#license)
@@ -51,7 +54,7 @@ I was not happy with the limitations this app had. It was only the C & R of CRUD
 
 Since I had added the input of category, I wanted the user to be able to see their spending per category. The boilerplate had come with a chart utilizing the chart.js CDN. It seemed only natural to display this spending per category data with another chart. This was tricky as I had to code a way for the duplicate keys to sum their values and only appear once for the data that is sent to the chart. I resolved it by using the `reduce()` method with a `for...of` loop nested inside. 
 
-### Modularization  and Webpack
+### Modularization and Webpack
 
 With all the functionality and design updated, I went further yet. From adding all of the new CRUD functionality the `index.js` file was getting a little unruly. I decided to modularize the scripts and use Webpack to bundle for production. The separation of concerns that I chose to split the modules up into are as follows: index - calls the initial data get function and has the DOM event listeners, table - holds all of the CRUD functionality, chart - has all of the chart functionality, & total - has the function that calculates the transaction totals. 
 
